@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProtoLingua Edizioni — Dialoghi reali. Competenze vere.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black: #050506;
+    --panel: #121216;
+    --panel-2: #17171d;
+    --violet: #6d4aff;
+    --violet-bright: #8a6bff;
+    --violet-deep: #2e1f80;
+    --grey-100: #f5f5f5;
+    --grey-400: #9ca3af;
+    --grey-700: #2a2a30;
+    --line: #232329;
+    --radius: 14px;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--black);
+    color: var(--grey-100);
+    font-family: var(--body);
+    line-height:1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  h1,h2,h3{ font-family: var(--display); margin:0; letter-spacing: -0.02em; }
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--violet-bright);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before{
+    content:""; width:22px; height:1px; background: var(--violet-bright);
+  }
+  :focus-visible{
+    outline: 2px solid var(--violet-bright);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ===== NAV ===== */
+  header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(5,5,6,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height: 72px;
+  }
+  .logo{
+    font-family: var(--display); font-weight:700; font-size: 1.15rem;
+    letter-spacing: -0.01em;
+  }
+  .logo span{ color: var(--violet-bright); }
+  .btn{
+    font-family: var(--body); font-weight:600; font-size:0.92rem;
+    padding: 11px 22px; border-radius: 999px;
+    border: 1px solid transparent;
+    cursor:pointer; text-decoration:none; display:inline-block;
+    transition: transform .15s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn-primary{ background: var(--violet); color:#fff; }
+  .btn-primary:hover{ background: var(--violet-bright); transform: translateY(-1px); }
+  .btn-ghost{ border-color: var(--line); color: var(--grey-100); }
+  .btn-ghost:hover{ border-color: var(--violet-bright); }
+
+  /* ===== HERO ===== */
+  .hero{
+    padding: 96px 0 88px;
+    display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items:center;
+  }
+  .hero h1{
+    font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+    line-height: 1.05;
+  }
+  .hero h1 em{
+    font-style: normal; color: var(--violet-bright);
+  }
+  .hero p.lead{
+    margin-top: 22px; font-size: 1.08rem; color: var(--grey-400); max-width: 46ch;
+  }
+  .hero .cta-row{ margin-top: 34px; display:flex; gap:14px; flex-wrap:wrap; }
+  .hero .fine{
+    margin-top:16px; font-family: var(--mono); font-size:0.78rem; color: var(--grey-400);
+  }
+
+  /* transcript signature card */
+  .transcript{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: 0 30px 60px -30px rgba(109,74,255,0.35);
+  }
+  .transcript-head{
+    display:flex; align-items:center; justify-content:space-between;
+    font-family: var(--mono); font-size: 0.72rem; color: var(--grey-400);
+    padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .transcript-head .dot{ width:8px; height:8px; border-radius:50%; background: var(--violet-bright); display:inline-block; margin-right:8px;}
+  .msg{ margin-bottom: 16px; max-width: 88%; }
+  .msg .who{
+    font-family: var(--mono); font-size: 0.7rem; color: var(--grey-400);
+    margin-bottom: 4px; display:flex; gap:8px;
+  }
+  .msg .bubble{
+    background: var(--panel-2); border: 1px solid var(--line);
+    border-radius: 10px; padding: 10px 14px; font-size: 0.95rem;
+  }
+  .msg.you{ margin-left: auto; }
+  .msg.you .bubble{ background: var(--violet-deep); border-color: #3d2aa0; }
+  .msg.you .who{ justify-content:flex-end; }
+  .cursor{ display:inline-block; width:7px; height:1em; background:var(--violet-bright); vertical-align:-2px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+  @media (prefers-reduced-motion: reduce){ .cursor{ animation:none; } }
+
+  /* ===== SECTIONS ===== */
+  section{ padding: 88px 0; border-top: 1px solid var(--line); }
+  .section-head{ max-width: 640px; margin-bottom: 48px; }
+  .section-head h2{ font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  .section-head p{ color: var(--grey-400); margin-top: 14px; font-size:1.02rem; }
+
+  /* manifesto */
+  .manifesto{ display:grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items:start; }
+  .manifesto .big{ font-family: var(--display); font-size: clamp(1.5rem,2.6vw,2rem); line-height:1.25; }
+  .manifesto .big .no{ color: var(--grey-400); text-decoration: line-through; text-decoration-color:#4a4a55; }
+  .manifesto .big .yes{ color: var(--violet-bright); }
+  .manifesto ul{ list-style:none; margin: 24px 0 0; padding:0; display:grid; gap:14px; }
+  .manifesto li{ padding-left: 22px; position:relative; color: var(--grey-100); font-size:0.98rem; }
+  .manifesto li::before{ content:"—"; position:absolute; left:0; color: var(--violet-bright); }
+
+  /* personas */
+  .grid-personas{ display:grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
+  .persona{
+    background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 26px; display:flex; flex-direction:column; gap:16px;
+  }
+  .persona h3{ font-size: 1.08rem; }
+  .persona .quote{
+    font-family: var(--mono); font-size: 0.85rem; color: var(--grey-400);
+    border-left: 2px solid var(--violet); padding-left: 12px;
+  }
+
+  /* come funziona */
+  .steps{ display:grid; grid-template-columns: repeat(3,1fr); gap: 26px; }
+  .step{ position:relative; padding-top: 8px; }
+  .step .num{ font-family: var(--mono); color: var(--violet-bright); font-size:0.85rem; }
+  .step h3{ margin: 10px 0 8px; font-size: 1.15rem; }
+  .step p{ color: var(--grey-400); font-size:0.95rem; }
+
+  /* pricing */
+  .grid-pricing{ display:grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+  .price{
+    background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 26px 22px; display:flex; flex-direction:column; gap: 10px;
+  }
+  .price.highlight{ border-color: var(--violet); background: linear-gradient(180deg, var(--violet-deep), var(--panel) 60%); }
+  .price .name{ font-family: var(--mono); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color: var(--grey-400); }
+  .price .amount{ font-family: var(--display); font-size: 2rem; font-weight:700; }
+  .price .amount span{ font-size:0.9rem; color: var(--grey-400); font-family: var(--body); font-weight:400; }
+  .price .desc{ font-size: 0.9rem; color: var(--grey-400); flex-grow:1; }
+
+  /* cta */
+  .cta-section{ text-align:center; }
+  .cta-section h2{ font-size: clamp(1.8rem,3.4vw,2.6rem); max-width:760px; margin:0 auto; }
+  .cta-section p{ color: var(--grey-400); margin: 18px auto 32px; max-width: 52ch; }
+
+  footer{ border-top:1px solid var(--line); padding: 36px 0; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  footer p{ margin:0; color: var(--grey-400); font-size:0.85rem; font-family: var(--mono); }
+
+  @media (max-width: 880px){
+    .hero{ grid-template-columns: 1fr; padding-top: 56px; }
+    .manifesto{ grid-template-columns: 1fr; }
+    .grid-personas{ grid-template-columns: 1fr; }
+    .steps{ grid-template-columns: 1fr; }
+    .grid-pricing{ grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px){
+    .grid-pricing{ grid-template-columns: 1fr; }
+    .cta-row{ flex-direction:column; }
+    .cta-row .btn{ text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">Proto<span>Lingua</span> Edizioni</div>
+    <a class="btn btn-primary" href="#prenota">Prenota una sessione</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap" style="border-top:none;">
+    <div>
+      <div class="eyebrow">Italiano per la vita vera</div>
+      <h1>Dialoghi reali. <br><em>Competenze vere.</em></h1>
+      <p class="lead">
+        Non lezioni frontali di grammatica. Conversazioni guidate, costruite sulla tua vita
+        reale in Italia — l'ufficio, il medico, i vicini, il colloquio di lavoro.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#prenota">Prenota una sessione esplorativa gratuita</a>
+        <a class="btn btn-ghost" href="#come-funziona">Come funziona</a>
+      </div>
+      <div class="fine">45 minuti, senza impegno — non un test a crocette</div>
+    </div>
+
+    <div class="transcript" aria-hidden="true">
+      <div class="transcript-head"><span><span class="dot"></span>sessione dal vivo</span><span>09:14</span></div>
+      <div class="msg">
+        <div class="who">Marco · nuovo in città</div>
+        <div class="bubble">Scusi, sto cercando l'ufficio anagrafe... è da questa parte?</div>
+      </div>
+      <div class="msg you">
+        <div class="who">Elena · facilitatrice</div>
+        <div class="bubble">Quasi giusto — meglio dire "sto cercando l'ufficio <em style="color:var(--violet-bright); font-style:normal;">dell'</em>anagrafe". Riprova.</div>
+      </div>
+      <div class="msg">
+        <div class="who">Marco</div>
+        <div class="bubble">Sto cercando l'ufficio dell'anagrafe, è da questa parte<span class="cursor"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="manifesto">
+    <div class="wrap manifesto">
+      <div>
+        <div class="eyebrow">Il nostro metodo</div>
+        <div class="big">
+          Un <span class="no">professore</span> ti insegna le regole.<br>
+          Un <span class="yes">facilitatore</span> ti fa parlare.
+        </div>
+      </div>
+      <ul>
+        <li>Ogni sessione parte da una situazione che devi davvero affrontare, non da un capitolo di libro.</li>
+        <li>Le correzioni arrivano nel momento in cui parli, non dopo, su un test.</li>
+        <li>Il percorso si costruisce sul tuo contesto: lavoro, casa, burocrazia, relazioni.</li>
+        <li>L'obiettivo non è il congiuntivo perfetto. È farti capire, e capire, davvero.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="per-chi">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Per chi è pensato</h2>
+        <p>Quattro situazioni comuni. Probabilmente ti riconosci in una.</p>
+      </div>
+      <div class="grid-personas">
+        <div class="persona">
+          <h3>Ti sei appena trasferito per lavoro</h3>
+          <p class="quote">"Devo scrivere email professionali e sopravvivere alle chiacchiere prima della riunione."</p>
+        </div>
+        <div class="persona">
+          <h3>Hai seguito un partner in Italia</h3>
+          <p class="quote">"Mi serve l'italiano della vita quotidiana: medico, condominio, vicini di casa."</p>
+        </div>
+        <div class="persona">
+          <h3>Lavori da remoto, vivi in Italia</h3>
+          <p class="quote">"Non mi serve la fluidità da ufficio italiano, mi serve gestire la giornata senza stress."</p>
+        </div>
+        <div class="persona">
+          <h3>Sei qui da anni, ma non ti senti mai pronto</h3>
+          <p class="quote">"Ho studiato la grammatica per anni. Poi qualcuno mi parla e mi blocco."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="come-funziona">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Come funziona</h2>
+        <p>Tre passaggi, dalla prima chiacchierata al percorso su misura.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Sessione esplorativa</h3>
+          <p>45 minuti gratuiti per capire dove sei davvero — non con un test a crocette, ma parlando.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Percorso su misura</h3>
+          <p>Scegli il pacchetto di ore. I contenuti si costruiscono sulla tua situazione reale.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Pratica reale</h3>
+          <p>Ogni sessione è una conversazione vera, con correzioni sul momento, non compiti a casa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pacchetti">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Pacchetti</h2>
+        <p>Nessun abbonamento nascosto. Paghi le ore che ti servono.</p>
+      </div>
+      <div class="grid-pricing">
+        <div class="price">
+          <div class="name">Esplorativa</div>
+          <div class="amount">€0</div>
+          <div class="desc">45 minuti per valutare il livello reale e capire cosa ti serve.</div>
+          <a class="btn btn-ghost" href="#prenota">Prenota</a>
+        </div>
+        <div class="price">
+          <div class="name">Base</div>
+          <div class="amount">€120 <span>/ 4h</span></div>
+          <div class="desc">Per iniziare su una situazione specifica: lavoro, burocrazia, casa.</div>
+          <a class="btn btn-ghost" href="#prenota">Scegli</a>
+        </div>
+        <div class="price highlight">
+          <div class="name">Standard</div>
+          <div class="amount">€220 <span>/ 8h</span></div>
+          <div class="desc">Il pacchetto più scelto: copre più contesti reali in profondità.</div>
+          <a class="btn btn-primary" href="#prenota">Scegli</a>
+        </div>
+        <div class="price">
+          <div class="name">Intensivo</div>
+          <div class="amount">€350 <span>/ 15h</span></div>
+          <div class="desc">Per chi vuole un salto di livello concreto in poche settimane.</div>
+          <a class="btn btn-ghost" href="#prenota">Scegli</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prenota" class="cta-section">
+    <div class="wrap">
+      <h2>Pronto a parlare italiano vero, non da libro?</h2>
+      <p>Prenota la sessione esplorativa gratuita. Nessun impegno, solo una conversazione.</p>
+      <a class="btn btn-primary" href="mailto:info@protolingua-edizioni.com?subject=Sessione%20esplorativa%20gratuita">
+        Scrivi a info@protolingua-edizioni.com
+      </a>
+      <div class="fine" style="margin-top:16px;">Il booking automatico (Calendly) sarà collegato qui appena attivo — per ora si prenota via email.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="font-size:1rem;">Proto<span>Lingua</span> Edizioni</div>
+    <p>© 2026 ProtoLingua Edizioni — protolingua-edizioni.com</p>
+  </div>
+</footer>
+
+<script>
+  // Sposta il cursore lampeggiante alla fine del testo digitato, rispetta prefers-reduced-motion
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const bubble = document.querySelectorAll('.msg .bubble')[2];
+    if (bubble) {
+      const cursor = bubble.querySelector('.cursor');
+      const fullText = "Sto cercando l'ufficio dell'anagrafe, è da questa parte";
+      let i = 0;
+      bubble.childNodes[0].textContent = "";
+      const type = () => {
+        if (i <= fullText.length) {
+          bubble.childNodes[0].textContent = fullText.slice(0, i);
+          i++;
+          setTimeout(type, 45);
+        }
+      };
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { type(); io.disconnect(); } });
+      }, { threshold: 0.4 });
+      io.observe(bubble);
+    }
+  }
+</script>
+
+</body>
+</html>
