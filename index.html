@@ -55,6 +55,9 @@
     outline-offset: 3px;
     border-radius: 4px;
   }
+  .note{
+    font-family: var(--mono); font-size:0.78rem; color: var(--grey-400);
+  }
 
   /* ===== NAV ===== */
   header{
@@ -65,8 +68,9 @@
   }
   nav.wrap{
     display:flex; align-items:center; justify-content:space-between;
-    height: 72px;
+    min-height: 72px; flex-wrap: wrap; gap: 12px 0; padding-top: 14px; padding-bottom: 14px;
   }
+  .nav-links{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
   .logo{
     font-family: var(--display); font-weight:700; font-size: 1.15rem;
     letter-spacing: -0.01em;
@@ -181,6 +185,21 @@
   .price .amount span{ font-size:0.9rem; color: var(--grey-400); font-family: var(--body); font-weight:400; }
   .price .desc{ font-size: 0.9rem; color: var(--grey-400); flex-grow:1; }
 
+  /* prodotti digitali (dialoghi d'azienda) */
+  .grid-products{ display:grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+  .product{
+    background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 26px; display:flex; flex-direction:column; gap:14px;
+  }
+  .product .tag{ font-family: var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color: var(--violet-bright); }
+  .product h3{ font-size:1.1rem; }
+  .product .desc{ color: var(--grey-400); font-size:0.92rem; flex-grow:1; }
+  .product .includes{ list-style:none; margin:0; padding:0; display:grid; gap:6px; font-size:0.85rem; }
+  .product .includes li{ padding-left:18px; position:relative; }
+  .product .includes li::before{ content:"✓"; position:absolute; left:0; color: var(--violet-bright); }
+  .product .price-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:4px; }
+  .product .price-row .amount{ font-family: var(--display); font-size:1.5rem; font-weight:700; }
+
   /* cta */
   .cta-section{ text-align:center; }
   .cta-section h2{ font-size: clamp(1.8rem,3.4vw,2.6rem); max-width:760px; margin:0 auto; }
@@ -196,6 +215,7 @@
     .grid-personas{ grid-template-columns: 1fr; }
     .steps{ grid-template-columns: 1fr; }
     .grid-pricing{ grid-template-columns: 1fr 1fr; }
+    .grid-products{ grid-template-columns: 1fr; }
   }
   @media (max-width: 520px){
     .grid-pricing{ grid-template-columns: 1fr; }
@@ -209,7 +229,10 @@
 <header>
   <nav class="wrap">
     <div class="logo">Proto<span>Lingua</span> Edizioni</div>
-    <a class="btn btn-primary" href="#prenota">Prenota una sessione</a>
+    <div class="nav-links">
+      <a class="btn btn-ghost" href="#dialoghi-azienda">Dialoghi d'azienda</a>
+      <a class="btn btn-primary" href="#prenota">Prenota una sessione</a>
+    </div>
   </nav>
 </header>
 
@@ -349,6 +372,61 @@
           <a class="btn btn-ghost" href="#prenota">Scegli</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="dialoghi-azienda">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Prodotti digitali</div>
+        <h2>Dialoghi d'azienda</h2>
+        <p>Pacchetti scaricabili con dialoghi scritti e audio per l'italiano che si usa davvero in ufficio — da studiare anche senza una sessione dal vivo. In vendita su Gumroad.</p>
+      </div>
+      <div class="grid-products">
+        <div class="product">
+          <div class="tag">Pack €7</div>
+          <h3>Riunioni &amp; email</h3>
+          <p class="desc">Dialoghi reali per partecipare a una riunione, chiedere chiarimenti e scrivere email professionali senza sembrare un traduttore automatico.</p>
+          <ul class="includes">
+            <li>8 dialoghi scritti (PDF)</li>
+            <li>Audio madrelingua, velocità reale</li>
+            <li>Frasi chiave da riusare subito</li>
+          </ul>
+          <div class="price-row">
+            <div class="amount">€7</div>
+            <a class="btn btn-primary" href="https://gumroad.com/l/protolingua-riunioni-email" target="_blank" rel="noopener">Acquista su Gumroad</a>
+          </div>
+        </div>
+        <div class="product">
+          <div class="tag">Pack €7</div>
+          <h3>Colloquio di lavoro</h3>
+          <p class="desc">Dalla presentazione personale alle domande più insidiose: dialoghi costruiti su colloqui italiani veri, non su copioni da manuale.</p>
+          <ul class="includes">
+            <li>8 dialoghi scritti (PDF)</li>
+            <li>Audio madrelingua, velocità reale</li>
+            <li>Glossario espressioni da colloquio</li>
+          </ul>
+          <div class="price-row">
+            <div class="amount">€7</div>
+            <a class="btn btn-primary" href="https://gumroad.com/l/protolingua-colloquio-lavoro" target="_blank" rel="noopener">Acquista su Gumroad</a>
+          </div>
+        </div>
+        <div class="product">
+          <div class="tag">Pack €7</div>
+          <h3>Small talk in ufficio</h3>
+          <p class="desc">Il caffè con i colleghi, le chiacchiere prima della riunione, le battute che non capisci mai: qui impari a starci dentro davvero.</p>
+          <ul class="includes">
+            <li>8 dialoghi scritti (PDF)</li>
+            <li>Audio madrelingua, velocità reale</li>
+            <li>Varianti formale/informale</li>
+          </ul>
+          <div class="price-row">
+            <div class="amount">€7</div>
+            <a class="btn btn-primary" href="https://gumroad.com/l/protolingua-small-talk-ufficio" target="_blank" rel="noopener">Acquista su Gumroad</a>
+          </div>
+        </div>
+      </div>
+      <div class="note" style="margin-top:22px;">I link Gumroad qui sopra sono segnaposto — vanno sostituiti con gli URL reali dei prodotti quando l'account Gumroad è pronto.</div>
     </div>
   </section>
 
