@@ -269,18 +269,14 @@
     </div>
 
     <div class="transcript" aria-hidden="true">
-      <div class="transcript-head"><span><span class="dot"></span>sessione dal vivo</span><span>09:14</span></div>
+      <div class="transcript-head"><span><span class="dot"></span>sessione dal vivo</span><span>14:32</span></div>
       <div class="msg">
-        <div class="who">Marco · nuovo in città</div>
-        <div class="bubble">Scusi, sto cercando l'ufficio anagrafe... è da questa parte?</div>
+        <div class="who">Fabio · professionista</div>
+        <div class="bubble">No no, io parlo italiani però quando avere riunioni no capiscere niente.</div>
       </div>
       <div class="msg you">
         <div class="who">Elena · facilitatrice</div>
-        <div class="bubble">Quasi giusto — meglio dire "sto cercando l'ufficio <em style="color:var(--violet-bright); font-style:normal;">dell'</em>anagrafe". Riprova.</div>
-      </div>
-      <div class="msg">
-        <div class="who">Marco</div>
-        <div class="bubble">Sto cercando l'ufficio dell'anagrafe, è da questa parte<span class="cursor"></span></div>
+        <div class="bubble">E ti credo! Hai proprio bisogno di una mano! Ho proprio qualche consiglio che fa al caso tuo<span class="cursor"></span></div>
       </div>
     </div>
   </section>
@@ -499,17 +495,17 @@
 <script>
   // Sposta il cursore lampeggiante alla fine del testo digitato, rispetta prefers-reduced-motion
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const bubble = document.querySelectorAll('.msg .bubble')[2];
+    const bubble = document.querySelectorAll('.msg .bubble')[1];
     if (bubble) {
       const cursor = bubble.querySelector('.cursor');
-      const fullText = "Sto cercando l'ufficio dell'anagrafe, è da questa parte";
+      const fullText = "E ti credo! Hai proprio bisogno di una mano! Ho proprio qualche consiglio che fa al caso tuo";
       let i = 0;
       bubble.childNodes[0].textContent = "";
       const type = () => {
         if (i <= fullText.length) {
           bubble.childNodes[0].textContent = fullText.slice(0, i);
           i++;
-          setTimeout(type, 45);
+          setTimeout(type, 35);
         }
       };
       const io = new IntersectionObserver((entries) => {
