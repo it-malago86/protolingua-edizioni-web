@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ProtoLingua Edizioni — Dialoghi reali. Competenze vere.</title>
-<link rel="icon" href="/favicon.ico" sizes="any"> <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"> <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"> <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png"> <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png"> <meta property="og:image" content="/social-preview.png"> <meta name="theme-color" content="#050506">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" href="/favicon.ico" sizes="any"> <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"> <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -133,9 +132,9 @@
     background: var(--panel-2); border: 1px solid var(--line);
     border-radius: 10px; padding: 10px 14px; font-size: 0.95rem;
   }
-  .msg.you{ margin-left: auto; }
   .msg.you .bubble{ background: var(--violet-deep); border-color: #3d2aa0; }
   .msg.you .who{ justify-content:flex-end; }
+  .msg.you{ margin-left: auto; }
   .cursor{ display:inline-block; width:7px; height:1em; background:var(--violet-bright); vertical-align:-2px; animation: blink 1s steps(1) infinite; }
   @keyframes blink{ 50%{ opacity:0; } }
   @media (prefers-reduced-motion: reduce){ .cursor{ animation:none; } }
@@ -154,6 +153,21 @@
   .manifesto ul{ list-style:none; margin: 24px 0 0; padding:0; display:grid; gap:14px; }
   .manifesto li{ padding-left: 22px; position:relative; color: var(--grey-100); font-size:0.98rem; }
   .manifesto li::before{ content:"—"; position:absolute; left:0; color: var(--violet-bright); }
+
+  /* chi sono section */
+  .chi-sono{ display:grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items:center; }
+  .chi-sono .content h3{ font-size: clamp(1.3rem, 2.2vw, 1.7rem); line-height: 1.3; margin-bottom: 24px; }
+  .chi-sono .content p{ color: var(--grey-400); margin: 0 0 16px 0; font-size: 0.98rem; }
+  .chi-sono .content p:last-child{ margin-bottom: 0; }
+  .chi-sono .credential{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin-top: 26px;
+  }
+  .chi-sono .credential .label{ font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--grey-400); margin-bottom: 8px; }
+  .chi-sono .credential .statement{ font-family: var(--display); font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.3; color: var(--violet-bright); }
 
   /* personas */
   .grid-personas{ display:grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
@@ -213,6 +227,7 @@
   @media (max-width: 880px){
     .hero{ grid-template-columns: 1fr; padding-top: 56px; }
     .manifesto{ grid-template-columns: 1fr; }
+    .chi-sono{ grid-template-columns: 1fr; }
     .grid-personas{ grid-template-columns: 1fr; }
     .steps{ grid-template-columns: 1fr; }
     .grid-pricing{ grid-template-columns: 1fr 1fr; }
@@ -285,6 +300,37 @@
         <li>Il percorso si costruisce sul tuo contesto: lavoro, casa, burocrazia, relazioni.</li>
         <li>L'obiettivo non è il congiuntivo perfetto. È farti capire, e capire, davvero.</li>
       </ul>
+    </div>
+  </section>
+
+  <section id="chi-sono">
+    <div class="wrap chi-sono">
+      <div class="content">
+        <h3>Non sono un professore.<br>Ho osservato.</h3>
+        <p>
+          Non ho scritto libri di grammatica. Non do certificazioni ufficiali. Sono madrelingua italiano e ho passato anni a osservare come gli stranieri vivono il lavoro qui in Italia.
+        </p>
+        <p>
+          So cosa significa sapere l'italiano B2 ma bloccarsi in una riunione. Dire le cose giuste con il tono sbagliato. Sentirsi sempre "qualche passo indietro" culturalmente.
+        </p>
+        <p>
+          Il mio ruolo non è insegnarti. È accompagnarti.
+        </p>
+        <div class="credential">
+          <div class="label">ProtoLingua è</div>
+          <div class="statement">La mia mappa di osservazione. Non le mie lezioni. Sono i tuoi passi da seguire.</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <div class="persona">
+          <p style="color: var(--violet-bright); margin:0; font-size:0.95rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em;">Il problema che vedi</p>
+          <p style="margin:0; color: var(--grey-100);">Sai l'italiano, ma non riesci a "suonare" davvero italiano al lavoro. Le regole grammaticali sono chiare. Il contesto culturale no.</p>
+        </div>
+        <div class="persona">
+          <p style="color: var(--violet-bright); margin:0; font-size:0.95rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em;">La soluzione</p>
+          <p style="margin:0; color: var(--grey-100);">Non più libri di grammatica. Dialoghi reali che mostrano come si parla davvero — riunioni, email, gerarchia informale, il "no" che non offende.</p>
+        </div>
+      </div>
     </div>
   </section>
 
